@@ -28,7 +28,14 @@ static BaseAPI *sharedInstanceBaseApi = nil;
 + (void) getOnPath:(NSString*) path
    successCallback:(ResponseSuccessBlock)successCallback
      errorCallBack:(ResponseFailBlock)errorCallback {
-   
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:path parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        successCallback(task, responseObject);
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        errorCallback(operation, error);
+    }];
 }
 
 @end

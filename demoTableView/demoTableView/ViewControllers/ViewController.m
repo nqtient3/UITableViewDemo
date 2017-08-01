@@ -23,11 +23,12 @@
 }
 
 - (void)callAPI {
-   [BaseAPI getOnPath:kUrl successCallback:^(id data, id header) {
-       NSLog(@"success");
-   } errorCallBack:^(id task, NSError *error) {
-        NSLog(@"Fail");
-   }];
+    [BaseAPI getOnPath:kUrl successCallback:^(NSURLSessionTask *task, id responseObject) {
+        
+        
+    } errorCallBack:^(NSURLSessionTask *operation, NSError *error) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

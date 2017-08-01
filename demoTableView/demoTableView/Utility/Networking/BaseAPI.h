@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 
-typedef void (^ResponseSuccessBlock)(id data, id header);
-typedef void (^ResponseFailBlock)(id task, NSError * error);
+typedef void (^ResponseSuccessBlock)(NSURLSessionTask *task, id responseObject);
+typedef void (^ResponseFailBlock)(NSURLSessionTask *operation, NSError *error);
 
 @interface BaseAPI : AFHTTPSessionManager
 
